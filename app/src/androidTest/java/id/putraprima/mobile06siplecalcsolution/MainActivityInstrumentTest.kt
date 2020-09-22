@@ -2,15 +2,17 @@ package id.putraprima.mobile06siplecalcsolution
 
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.action.ViewActions
+import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.filters.LargeTest
 import androidx.test.rule.ActivityTestRule
 import org.hamcrest.Matchers
 import org.junit.Rule
 import org.junit.Test
+import id.putraprima.mobile06siplecalcsolution.ToastMatcher.Companion.onToast
 
 @LargeTest
-class MainActivityTest{
+class MainActivityInstrumentTest {
 
     @Rule
     @JvmField
@@ -94,5 +96,18 @@ class MainActivityTest{
                 Matchers.allOf(ViewMatchers.withId(R.id.text_hasil), ViewMatchers.withText("1.00"))
         )
         appCompactTextView.perform()
+    }
+
+    @Test
+    fun testToast() {
+        val appCompatEditText = Espresso.onView(
+                Matchers.allOf(ViewMatchers.withId(R.id.edit_text_angka_pertama), ViewMatchers.isDisplayed()))
+        appCompatEditText.perform(ViewActions.replaceText(""), ViewActions.closeSoftKeyboard())
+
+        val appCompatButton = Espresso.onView(
+                Matchers.allOf(ViewMatchers.withId(R.id.button_bagi), ViewMatchers.withText("Bagi"), ViewMatchers.isDisplayed()))
+        appCompatButton.perform(ViewActions.click())
+
+        onToast("Input harus diisi").check(matches(ViewMatchers.isDisplayed()))
     }
 }
