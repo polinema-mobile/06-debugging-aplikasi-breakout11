@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
 
         divideBtn.setOnClickListener {
             getAngkaMasukkan()
-            val tmp: Float? = divide(num1, num2)
+            val tmp: Double? = divide(num1, num2)
             val result: String = if (tmp?.isNaN()!! || tmp.isInfinite()) {
                 "tidak bisa dibagi 0"
             } else {
@@ -82,8 +82,8 @@ class MainActivity : AppCompatActivity() {
         return num1 - num2
     }
 
-    fun divide(num1: Int, num2: Int): Float {
-        return num1.toFloat() / num2.toFloat()
+    fun divide(num1: Int, num2: Int): Double {
+        return num1.toDouble() / num2.toDouble()
     }
 
     fun multiply(num1: Int, num2: Int): Int {

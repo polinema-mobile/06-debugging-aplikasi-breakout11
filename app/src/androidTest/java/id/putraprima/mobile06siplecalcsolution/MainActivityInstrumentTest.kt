@@ -5,21 +5,22 @@ import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.closeSoftKeyboard
 import androidx.test.espresso.action.ViewActions.replaceText
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.*
+import androidx.test.ext.junit.rules.ActivityScenarioRule
+import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
-import androidx.test.rule.ActivityTestRule
 import org.junit.Rule
 import org.junit.Test
 import id.putraprima.mobile06siplecalcsolution.ToastMatcher.Companion.onToast
 import org.hamcrest.Matchers.allOf
+import org.junit.runner.RunWith
 
+@RunWith(AndroidJUnit4::class)
 @LargeTest
 class MainActivityInstrumentTest {
 
-    @Rule
-    @JvmField
-    var mActivityTestRule = ActivityTestRule(MainActivity::class.java)
+    @get:Rule
+    var mActivityRule = ActivityScenarioRule(MainActivity::class.java)
 
     @Test
     fun testKurang() {
@@ -29,7 +30,7 @@ class MainActivityInstrumentTest {
         onView(allOf(withId(R.id.edit_text_angka_kedua), isDisplayed()))
                 .perform(replaceText("7"), closeSoftKeyboard())
 
-        onView(allOf(ViewMatchers.withId(R.id.button_kurang), withText("Kurang"), isDisplayed()))
+        onView(allOf(withId(R.id.button_kurang), withText("Kurang"), isDisplayed()))
                 .perform(ViewActions.click())
 
         onView(allOf(withId(R.id.text_hasil), withText("0")))
@@ -44,7 +45,7 @@ class MainActivityInstrumentTest {
         onView(allOf(withId(R.id.edit_text_angka_kedua), isDisplayed()))
                 .perform(replaceText("7"), closeSoftKeyboard())
 
-        onView(allOf(ViewMatchers.withId(R.id.button_tambah), withText("Tambah"), isDisplayed()))
+        onView(allOf(withId(R.id.button_tambah), withText("Tambah"), isDisplayed()))
                 .perform(ViewActions.click())
 
         onView(allOf(withId(R.id.text_hasil), withText("14")))
@@ -59,7 +60,7 @@ class MainActivityInstrumentTest {
         onView(allOf(withId(R.id.edit_text_angka_kedua), isDisplayed()))
                 .perform(replaceText("7"), closeSoftKeyboard())
 
-        onView(allOf(ViewMatchers.withId(R.id.button_kali), withText("Kali"), isDisplayed()))
+        onView(allOf(withId(R.id.button_kali), withText("Kali"), isDisplayed()))
                 .perform(ViewActions.click())
 
         onView(allOf(withId(R.id.text_hasil), withText("49")))
@@ -74,7 +75,7 @@ class MainActivityInstrumentTest {
         onView(allOf(withId(R.id.edit_text_angka_kedua), isDisplayed()))
                 .perform(replaceText("7"), closeSoftKeyboard())
 
-        onView(allOf(ViewMatchers.withId(R.id.button_bagi), withText("Bagi"), isDisplayed()))
+        onView(allOf(withId(R.id.button_bagi), withText("Bagi"), isDisplayed()))
                 .perform(ViewActions.click())
 
         onView(allOf(withId(R.id.text_hasil), withText("1.0")))
@@ -105,7 +106,7 @@ class MainActivityInstrumentTest {
         onView(allOf(withId(R.id.edit_text_angka_kedua), isDisplayed()))
                 .perform(replaceText("0"), closeSoftKeyboard())
 
-        onView(allOf(ViewMatchers.withId(R.id.button_bagi), withText("Bagi"), isDisplayed()))
+        onView(allOf(withId(R.id.button_bagi), withText("Bagi"), isDisplayed()))
                 .perform(ViewActions.click())
 
         onView(allOf(withId(R.id.text_hasil), withText("tidak bisa dibagi 0")))
@@ -120,7 +121,7 @@ class MainActivityInstrumentTest {
         onView(allOf(withId(R.id.edit_text_angka_kedua), isDisplayed()))
                 .perform(replaceText("0"), closeSoftKeyboard())
 
-        onView(allOf(ViewMatchers.withId(R.id.button_bagi), withText("Bagi"), isDisplayed()))
+        onView(allOf(withId(R.id.button_bagi), withText("Bagi"), isDisplayed()))
                 .perform(ViewActions.click())
 
         onView(allOf(withId(R.id.text_hasil), withText("tidak bisa dibagi 0")))

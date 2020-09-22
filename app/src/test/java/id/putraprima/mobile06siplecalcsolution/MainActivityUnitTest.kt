@@ -4,10 +4,11 @@ import org.junit.Test
 import org.junit.Assert.*
 
 class MainActivityUnitTest {
+    val mainActivity = MainActivity()
 
     @Test
     fun add() {
-        assertEquals(4, 2 + 2)
+        assertEquals(4, mainActivity.add(2, 2))
     }
 
     @Test
@@ -17,7 +18,7 @@ class MainActivityUnitTest {
 
     @Test
     fun divide() {
-        assertEquals(2.5, 5.0 / 2.0, 3.0)
+        assertEquals(3.33, mainActivity.divide(10, 3), 0.01)
     }
 
     @Test
