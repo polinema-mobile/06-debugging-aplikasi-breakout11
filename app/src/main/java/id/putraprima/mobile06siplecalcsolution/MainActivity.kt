@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
                 return@setOnClickListener
             } else {
                 getAngkaMasukkan()
-                resultTxt.text = "%d".format(num1 + num2)
+                resultTxt.text = "%d".format(add(num1, num2))
             }
         }
 
@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
                 return@setOnClickListener
             } else {
                 getAngkaMasukkan()
-                resultTxt.text = "%d".format(num1 - num2)
+                resultTxt.text = "%d".format(min(num1, num2))
             }
         }
 
@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
                 return@setOnClickListener
             } else {
                 getAngkaMasukkan()
-                resultTxt.text = "%d".format(num1 * num2)
+                resultTxt.text = "%d".format(multiply(num1, num2))
             }
         }
 
@@ -71,7 +71,7 @@ class MainActivity : AppCompatActivity() {
                 return@setOnClickListener
             } else {
                 getAngkaMasukkan()
-                resultTxt.text = "%.2f".format(num1.toFloat() / num2.toFloat())
+                resultTxt.text = "%.2f".format(divide(num1, num2))
             }
         }
 
@@ -84,5 +84,22 @@ class MainActivity : AppCompatActivity() {
         //TODO 01 Buatlah kode program untuk mengambil nilai input dari edit text
         num1 = number1Edt.text.toString().toInt()
         num2 = number2Edt.text.toString().toInt()
+    }
+
+    // Function
+    fun add(num1: Int, num2: Int): Int {
+        return num1+num2
+    }
+
+    fun min(num1: Int, num2: Int): Int {
+        return num1-num2
+    }
+
+    fun divide(num1: Int, num2: Int): Float {
+        return (num1/num2).toFloat()
+    }
+
+    fun multiply(num1: Int, num2: Int): Int{
+        return num1*num2
     }
 }
