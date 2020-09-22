@@ -32,46 +32,46 @@ class MainActivity : AppCompatActivity() {
 
         plusBtn.setOnClickListener {
             //TODO 05 Buatlah Validasi input agar masukan yang di isi oleh user tidak membuat program Force Close
-            if (number1Edt.text.toString().isEmpty() || number2Edt.text.toString().isEmpty()){
+            if (number1Edt.text.toString().isEmpty() || number2Edt.text.toString().isEmpty()) {
                 Toast.makeText(applicationContext, "Input harus diisi", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             } else {
                 getAngkaMasukkan()
-                resultTxt.text = "%d".format(num1+num2)
+                resultTxt.text = "%d".format(num1 + num2)
             }
         }
 
         minusBtn.setOnClickListener {
             //TODO 05 Buatlah Validasi input agar masukan yang di isi oleh user tidak membuat program Force Close
-            if (number1Edt.text.toString().isEmpty() || number2Edt.text.toString().isEmpty()){
+            if (number1Edt.text.toString().isEmpty() || number2Edt.text.toString().isEmpty()) {
                 Toast.makeText(applicationContext, "Input harus diisi", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             } else {
                 getAngkaMasukkan()
-                resultTxt.text = "%d".format(num1-num2)
+                resultTxt.text = "%d".format(num1 - num2)
             }
         }
 
         //TODO 02 Buatlah kode program untuk menambahkan event klik dari tombol kali dan tombol bagi
         multiplyBtn.setOnClickListener {
             //TODO 05 Buatlah Validasi input agar masukan yang di isi oleh user tidak membuat program Force Close
-            if (number1Edt.text.toString().isEmpty() || number2Edt.text.toString().isEmpty()){
+            if (number1Edt.text.toString().isEmpty() || number2Edt.text.toString().isEmpty()) {
                 Toast.makeText(applicationContext, "Input harus diisi", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             } else {
                 getAngkaMasukkan()
-                resultTxt.text = "%d".format(num1*num2)
+                resultTxt.text = "%d".format(num1 * num2)
             }
         }
 
         divideBtn.setOnClickListener {
             //TODO 05 Buatlah Validasi input agar masukan yang di isi oleh user tidak membuat program Force Close
-            if (number1Edt.text.toString().isEmpty() || number2Edt.text.toString().isEmpty()){
+            if (number1Edt.text.toString().isEmpty() || number2Edt.text.toString().isEmpty()) {
                 Toast.makeText(applicationContext, "Input harus diisi", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             } else {
                 getAngkaMasukkan()
-                resultTxt.text = "%.2f".format(num1.toFloat()/num2.toFloat())
+                resultTxt.text = "%.2f".format(num1.toFloat() / num2.toFloat())
             }
         }
 
@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
         //TODO 04 Gunakanlah Debugger untuk mencari kesalahan program (program berjalan dengan baik namun hasilnya salah)
     }
 
-    fun getAngkaMasukkan(){
+    fun getAngkaMasukkan() {
         //TODO 01 Buatlah kode program untuk mengambil nilai input dari edit text
         num1 = number1Edt.text.toString().toInt()
         num2 = number2Edt.text.toString().toInt()
