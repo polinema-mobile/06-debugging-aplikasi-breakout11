@@ -1,15 +1,18 @@
 package id.putraprima.mobile06siplecalcsolution
 
-import androidx.test.espresso.Espresso
+import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
+import androidx.test.espresso.action.ViewActions.closeSoftKeyboard
+import androidx.test.espresso.action.ViewActions.replaceText
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.filters.LargeTest
 import androidx.test.rule.ActivityTestRule
-import org.hamcrest.Matchers
 import org.junit.Rule
 import org.junit.Test
 import id.putraprima.mobile06siplecalcsolution.ToastMatcher.Companion.onToast
+import org.hamcrest.Matchers.allOf
 
 @LargeTest
 class MainActivityInstrumentTest {
@@ -20,94 +23,107 @@ class MainActivityInstrumentTest {
 
     @Test
     fun testKurang() {
-        val appCompatEditText = Espresso.onView(
-                Matchers.allOf(ViewMatchers.withId(R.id.edit_text_angka_pertama), ViewMatchers.isDisplayed()))
-        appCompatEditText.perform(ViewActions.replaceText("7"), ViewActions.closeSoftKeyboard())
+        onView(allOf(withId(R.id.edit_text_angka_pertama), isDisplayed()))
+                .perform(replaceText("7"), closeSoftKeyboard())
 
-        val appCompatEditText2 = Espresso.onView(
-                Matchers.allOf(ViewMatchers.withId(R.id.edit_text_angka_kedua), ViewMatchers.isDisplayed()))
-        appCompatEditText2.perform(ViewActions.replaceText("7"), ViewActions.closeSoftKeyboard())
+        onView(allOf(withId(R.id.edit_text_angka_kedua), isDisplayed()))
+                .perform(replaceText("7"), closeSoftKeyboard())
 
-        val appCompatButton = Espresso.onView(
-                Matchers.allOf(ViewMatchers.withId(R.id.button_kurang), ViewMatchers.withText("Kurang"), ViewMatchers.isDisplayed()))
-        appCompatButton.perform(ViewActions.click())
+        onView(allOf(ViewMatchers.withId(R.id.button_kurang), withText("Kurang"), isDisplayed()))
+                .perform(ViewActions.click())
 
-        val appCompactTextView = Espresso.onView(
-                Matchers.allOf(ViewMatchers.withId(R.id.text_hasil), ViewMatchers.withText("0"))
-        )
-        appCompactTextView.perform()
+        onView(allOf(withId(R.id.text_hasil), withText("0")))
+                .perform()
     }
 
     @Test
     fun testTambah() {
-        val appCompatEditText = Espresso.onView(
-                Matchers.allOf(ViewMatchers.withId(R.id.edit_text_angka_pertama), ViewMatchers.isDisplayed()))
-        appCompatEditText.perform(ViewActions.replaceText("7"), ViewActions.closeSoftKeyboard())
+        onView(allOf(withId(R.id.edit_text_angka_pertama), isDisplayed()))
+                .perform(replaceText("7"), closeSoftKeyboard())
 
-        val appCompatEditText2 = Espresso.onView(
-                Matchers.allOf(ViewMatchers.withId(R.id.edit_text_angka_kedua), ViewMatchers.isDisplayed()))
-        appCompatEditText2.perform(ViewActions.replaceText("7"), ViewActions.closeSoftKeyboard())
+        onView(allOf(withId(R.id.edit_text_angka_kedua), isDisplayed()))
+                .perform(replaceText("7"), closeSoftKeyboard())
 
-        val appCompatButton = Espresso.onView(
-                Matchers.allOf(ViewMatchers.withId(R.id.button_tambah), ViewMatchers.withText("Tambah"), ViewMatchers.isDisplayed()))
-        appCompatButton.perform(ViewActions.click())
+        onView(allOf(ViewMatchers.withId(R.id.button_tambah), withText("Tambah"), isDisplayed()))
+                .perform(ViewActions.click())
 
-        val appCompactTextView = Espresso.onView(
-                Matchers.allOf(ViewMatchers.withId(R.id.text_hasil), ViewMatchers.withText("14"))
-        )
-        appCompactTextView.perform()
+        onView(allOf(withId(R.id.text_hasil), withText("14")))
+                .perform()
     }
 
     @Test
     fun testKali() {
-        val appCompatEditText = Espresso.onView(
-                Matchers.allOf(ViewMatchers.withId(R.id.edit_text_angka_pertama), ViewMatchers.isDisplayed()))
-        appCompatEditText.perform(ViewActions.replaceText("7"), ViewActions.closeSoftKeyboard())
+        onView(allOf(withId(R.id.edit_text_angka_pertama), isDisplayed()))
+                .perform(replaceText("7"), closeSoftKeyboard())
 
-        val appCompatEditText2 = Espresso.onView(
-                Matchers.allOf(ViewMatchers.withId(R.id.edit_text_angka_kedua), ViewMatchers.isDisplayed()))
-        appCompatEditText2.perform(ViewActions.replaceText("7"), ViewActions.closeSoftKeyboard())
+        onView(allOf(withId(R.id.edit_text_angka_kedua), isDisplayed()))
+                .perform(replaceText("7"), closeSoftKeyboard())
 
-        val appCompatButton = Espresso.onView(
-                Matchers.allOf(ViewMatchers.withId(R.id.button_kali), ViewMatchers.withText("Kali"), ViewMatchers.isDisplayed()))
-        appCompatButton.perform(ViewActions.click())
+        onView(allOf(ViewMatchers.withId(R.id.button_kali), withText("Kali"), isDisplayed()))
+                .perform(ViewActions.click())
 
-        val appCompactTextView = Espresso.onView(
-                Matchers.allOf(ViewMatchers.withId(R.id.text_hasil), ViewMatchers.withText("49"))
-        )
-        appCompactTextView.perform()
+        onView(allOf(withId(R.id.text_hasil), withText("49")))
+                .perform()
     }
 
     @Test
     fun testBagi() {
-        val appCompatEditText = Espresso.onView(
-                Matchers.allOf(ViewMatchers.withId(R.id.edit_text_angka_pertama), ViewMatchers.isDisplayed()))
-        appCompatEditText.perform(ViewActions.replaceText("7"), ViewActions.closeSoftKeyboard())
+        onView(allOf(withId(R.id.edit_text_angka_pertama), isDisplayed()))
+                .perform(replaceText("7"), closeSoftKeyboard())
 
-        val appCompatEditText2 = Espresso.onView(
-                Matchers.allOf(ViewMatchers.withId(R.id.edit_text_angka_kedua), ViewMatchers.isDisplayed()))
-        appCompatEditText2.perform(ViewActions.replaceText("7"), ViewActions.closeSoftKeyboard())
+        onView(allOf(withId(R.id.edit_text_angka_kedua), isDisplayed()))
+                .perform(replaceText("7"), closeSoftKeyboard())
 
-        val appCompatButton = Espresso.onView(
-                Matchers.allOf(ViewMatchers.withId(R.id.button_bagi), ViewMatchers.withText("Bagi"), ViewMatchers.isDisplayed()))
-        appCompatButton.perform(ViewActions.click())
+        onView(allOf(ViewMatchers.withId(R.id.button_bagi), withText("Bagi"), isDisplayed()))
+                .perform(ViewActions.click())
 
-        val appCompactTextView = Espresso.onView(
-                Matchers.allOf(ViewMatchers.withId(R.id.text_hasil), ViewMatchers.withText("1.00"))
-        )
-        appCompactTextView.perform()
+        onView(allOf(withId(R.id.text_hasil), withText("1.0")))
+                .perform()
     }
 
     @Test
     fun testToast() {
-        val appCompatEditText = Espresso.onView(
-                Matchers.allOf(ViewMatchers.withId(R.id.edit_text_angka_pertama), ViewMatchers.isDisplayed()))
-        appCompatEditText.perform(ViewActions.replaceText(""), ViewActions.closeSoftKeyboard())
+        onView(allOf(withId(R.id.button_bagi), withText("Bagi"), isDisplayed()))
+                .perform(ViewActions.click())
 
-        val appCompatButton = Espresso.onView(
-                Matchers.allOf(ViewMatchers.withId(R.id.button_bagi), ViewMatchers.withText("Bagi"), ViewMatchers.isDisplayed()))
-        appCompatButton.perform(ViewActions.click())
+        onToast("Input harus diisi").check(matches(isDisplayed()))
 
-        onToast("Input harus diisi").check(matches(ViewMatchers.isDisplayed()))
+        onView(allOf(withId(R.id.edit_text_angka_pertama), isDisplayed()))
+                .perform(replaceText("7"), closeSoftKeyboard())
+
+        onView(allOf(withId(R.id.button_bagi), withText("Bagi"), isDisplayed()))
+                .perform(ViewActions.click())
+
+        onToast("Input harus diisi").check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun testNan() {
+        onView(allOf(withId(R.id.edit_text_angka_pertama), isDisplayed()))
+                .perform(replaceText("0"), closeSoftKeyboard())
+
+        onView(allOf(withId(R.id.edit_text_angka_kedua), isDisplayed()))
+                .perform(replaceText("0"), closeSoftKeyboard())
+
+        onView(allOf(ViewMatchers.withId(R.id.button_bagi), withText("Bagi"), isDisplayed()))
+                .perform(ViewActions.click())
+
+        onView(allOf(withId(R.id.text_hasil), withText("tidak bisa dibagi 0")))
+                .perform()
+    }
+
+    @Test
+    fun testInfinite() {
+        onView(allOf(withId(R.id.edit_text_angka_pertama), isDisplayed()))
+                .perform(replaceText("65"), closeSoftKeyboard())
+
+        onView(allOf(withId(R.id.edit_text_angka_kedua), isDisplayed()))
+                .perform(replaceText("0"), closeSoftKeyboard())
+
+        onView(allOf(ViewMatchers.withId(R.id.button_bagi), withText("Bagi"), isDisplayed()))
+                .perform(ViewActions.click())
+
+        onView(allOf(withId(R.id.text_hasil), withText("tidak bisa dibagi 0")))
+                .perform()
     }
 }
