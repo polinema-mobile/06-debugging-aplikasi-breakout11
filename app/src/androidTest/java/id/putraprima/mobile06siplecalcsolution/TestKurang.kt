@@ -10,14 +10,14 @@ import org.junit.Rule
 import org.junit.Test
 
 @LargeTest
-class TestTambah {
+class TestKurang {
 
     @Rule
     @JvmField
     var mActivityTestRule = ActivityTestRule(MainActivity::class.java)
 
     @Test
-    fun testTambah() {
+    fun testKurang() {
         val appCompatEditText = onView(
                 allOf(withId(R.id.edit_text_angka_pertama), isDisplayed()))
         appCompatEditText.perform(replaceText("7"), closeSoftKeyboard())
@@ -27,11 +27,11 @@ class TestTambah {
         appCompatEditText2.perform(replaceText("7"), closeSoftKeyboard())
 
         val appCompatButton = onView(
-                allOf(withId(R.id.button_tambah), withText("Tambah"), isDisplayed()))
+                allOf(withId(R.id.button_kurang), withText("Kurang"), isDisplayed()))
         appCompatButton.perform(click())
 
         val appCompactTextView = onView(
-                allOf(withId(R.id.text_hasil), withText("14"))
+                allOf(withId(R.id.text_hasil), withText("0"))
         )
         appCompactTextView.perform()
     }
