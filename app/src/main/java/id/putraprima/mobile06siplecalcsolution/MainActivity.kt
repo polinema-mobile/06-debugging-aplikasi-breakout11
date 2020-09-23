@@ -1,12 +1,16 @@
 package id.putraprima.mobile06siplecalcsolution
 
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import id.putraprima.mobile06siplecalcsolution.Calculation.add
+import id.putraprima.mobile06siplecalcsolution.Calculation.divide
+import id.putraprima.mobile06siplecalcsolution.Calculation.min
+import id.putraprima.mobile06siplecalcsolution.Calculation.multiply
+import id.putraprima.mobile06siplecalcsolution.Calculation.zeroInput
 
 class MainActivity : AppCompatActivity() {
     private lateinit var multiplyBtn: Button
@@ -48,13 +52,10 @@ class MainActivity : AppCompatActivity() {
 
         divideBtn.setOnClickListener {
             getAngkaMasukkan()
-            val tmp: Double? = divide(num1, num2)
-            val result: String = if (tmp?.isNaN()!! || tmp.isInfinite()) {
-                "tidak bisa dibagi 0"
-            } else {
-                tmp.toString()
-            }
-            resultTxt.text = result
+            if (zeroInput(num1, num2))
+                resultTxt.text = "%.2f".format(divide(num1, num2))
+            else
+                resultTxt.text = "Can't Divide By Zero"
         }
     }
 
@@ -63,30 +64,17 @@ class MainActivity : AppCompatActivity() {
     //TODO 04 Gunakanlah Debugger untuk mencari kesalahan program (program berjalan dengan baik namun hasilnya salah)
 
     fun getAngkaMasukkan() {
+        val n1: String = number1Edt.text.toString()
+        val n2: String = number2Edt.text.toString()
         //TODO 05 Buatlah Validasi input agar masukan yang di isi oleh user tidak membuat program Force Close
-        if (number1Edt.text.toString().isEmpty() || number2Edt.text.toString().isEmpty()) {
-            Toast.makeText(applicationContext, "Input harus diisi", Toast.LENGTH_SHORT).show()
+        if (n1.isEmpty() || n2.isEmpty()) {
+            Toast.makeText(applicationContext, "Perhatikan Input, kosong", Toast.LENGTH_SHORT).show()
+        } else if((n1 == "-" || n2 == "-") || (n1 == "+" || n2 == "+")){
+            Toast.makeText(applicationContext, "Perhatikan Input, angka tidak ada", Toast.LENGTH_SHORT).show()
         } else {
             //TODO 01 Buatlah kode program untuk mengambil nilai input dari edit text
-            num1 = number1Edt.text.toString().toInt()
-            num2 = number2Edt.text.toString().toInt()
+            num1 = n1.toInt()
+            num2 = n2.toInt()
         }
-    }
-
-    // Function
-    fun add(num1: Int, num2: Int): Int {
-        return num1 + num2
-    }
-
-    fun min(num1: Int, num2: Int): Int {
-        return num1 - num2
-    }
-
-    fun divide(num1: Int, num2: Int): Double {
-        return num1.toDouble() / num2.toDouble()
-    }
-
-    fun multiply(num1: Int, num2: Int): Int {
-        return num1 * num2
     }
 }
